@@ -2,6 +2,7 @@
   "name": "todolist",
   "version": "1.0.0",
   "scripts": {
+    "setup": "npm install concurrently && concurrently \"cd server && npm install\" \"cd client && npm install\"",
     "dev": "concurrently \"cd server && yarn dev\" \"cd client && yarn dev\""
   },
   "repository": {
