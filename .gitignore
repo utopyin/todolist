@@ -5,10 +5,13 @@
 /server/node_modules
 /server/.env
 /server/package-lock.json
+/server/yarn.lock
 
 /client/node_modules
 /client/.pnp
 /client/.pnp.js
+/client/package-lock.json
+/client/yarn.lock
 /client/coverage
 
 # next.js
