@@ -6,7 +6,7 @@ const addUser = require('./middlewares/addUser');
 
 app.use(passport.initialize())
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000"} ));
+app.use(cors({ origin: `${process.env.ADRESS}`} ));
 app.use(addUser)
 
 app.get('/', (req, res) => {
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.listen(process.env.PORT || 5000, () => {
   process.env.NODE_ENV == 'dev' ?
-    console.log(`Server listening on ${process.env.LOCAL + process.env.PORT}`)
+    console.log(`Server listening on ${process.env.LOCAL}`)
     : console.log(`Server listening on adress:${process.env.PORT || 5000}`)
 })
 

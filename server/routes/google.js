@@ -6,7 +6,7 @@ const registerUser = require('../middlewares/registerUser')
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `${process.env.NODE_ENV == 'dev' ? process.env.LOCAL + process.env.PORT : 'adress'}/auth/google/callback`,
+    callbackURL: `${process.env.LOCAL}/auth/google/callback`,
     passReqToCallback : true
   },
   function(request, accessToken, refreshToken, {email, given_name, picture}, done) {
@@ -31,10 +31,10 @@ module.exports = (app) => {
     }), registerUser], async (req, res) => {
       try {
         const [token, refreshToken] = await createTokens(req.user, process.env.JWT_SECRET, process.env.JWT_SECRET_2)
-        res.redirect(`http://localhost:3000/?accessToken=${token}&refreshToken=${refreshToken}`);
+        res.redirect(`${process.env.ADRESS}/?accessToken=${token}&refreshToken=${refreshToken}`);
       } catch (err) {
         console.log(err)
-        res.redirect("http://localhost:3000/?error=bad_auth");
+        res.redirect(`${process.env.ADRESS}/?error=bad_auth`);
       }
     }
   );
