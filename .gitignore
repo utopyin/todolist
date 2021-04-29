@@ -35,3 +35,5 @@
 
 # vercel
 /client/.vercel
+
+.vscode
