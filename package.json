@@ -1,0 +1,20 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"cd server && yarn dev\" \"cd client && yarn dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utopyin/todolist.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/utopyin/todolist/issues"
+  },
+  "homepage": "https://github.com/utopyin/todolist#readme",
+  "dependencies": {
+    "concurrently": "^6.0.2"
+  }
+}
