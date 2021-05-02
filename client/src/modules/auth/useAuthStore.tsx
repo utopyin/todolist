@@ -34,11 +34,11 @@ export default function AuthProvider({children}: Props) {
   const hasTokens = useTokenStore((s) => !!(s.accessToken && s.refreshToken));
   const { push } = useRouter()
 
-  const updateUser = (user: UserInterface) => {
+  const updateUser = (newUser: UserInterface) => {
     setUser(oldUser => {
       return {
         ...oldUser,
-        ...user
+        ...newUser
       }
     })
   }

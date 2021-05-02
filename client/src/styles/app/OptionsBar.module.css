@@ -1,0 +1,75 @@
+div.Bar {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+div.Selectors {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+div.Selectors > :not(:last-child) {
+  margin-right: 10px;
+}
+
+div.Todos, div.Tags {
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+div.Tags {
+  background: var(--grey-200);
+}
+
+div.Todos:hover {
+  background: var(--light-orange);
+}
+
+div.Tags:hover {
+  background: var(--grey-100);
+}
+
+div.Todos span, div.Tags span {
+  color: black;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+button.Add {
+  background: var(--grey-200);
+  display: flex;
+  align-items: center;
+  padding: 3px 6px;
+  border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
+  transition: all ease 0.2s;
+  outline: none;
+  border: none;
+}
+
+button.Add:hover {
+  background: var(--orange);
+}
+
+button.Add span {
+  color: black;
+  font-weight: bold;
+  margin-right: 6px;
+  margin-left: 4px;
+}
+
+button.Add svg {
+  fill: black;
+  width: 20px;
+}

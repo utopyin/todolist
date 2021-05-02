@@ -1,6 +1,6 @@
 button.Full {
   width: 100%;
-  background: var(--medium-grey);
+  background: var(--grey-600);
   color: var(--grey);
   padding: 13px;
   border-radius: 5px;
@@ -16,7 +16,7 @@ button.Full {
 }
 
 button.Full:hover {
-  background: var(--little-grey);
+  background: var(--grey-500);
   color: var(--grey);
 }
 

@@ -1,0 +1,23 @@
+button.Logo {
+  background: var(--grey-500);
+  border-radius: 5px;
+  width: 37px;
+  height: 37px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button.Logo:hover {
+  background: var(--grey-400);
+}
+
+button.Logo svg {
+  fill: var(--grey-100);
+  transition: fill 0.3s ease;
+  width: 17px;
+}

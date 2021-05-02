@@ -13,10 +13,10 @@ module.exports = (userID) => {
       tasks = await Promise.all(tasks.map(async task => {
         let [steps] = await connexion.execute(`SELECT * FROM steps WHERE steps.task_id = ${task.id}`)
         steps = steps.map(step => {
-          return {stepID: step.id, title: step.title, number: step.number, completed: !!step.completed}
+          return {id: step.id, title: step.title, number: step.number, completed: !!step.completed}
         })
         
-        return {taskID: task.id, title: task.title, steps}
+        return {id: task.id, title: task.title, steps}
       }))
       resolve({id: todolistID, tasks})
     } catch (err) {

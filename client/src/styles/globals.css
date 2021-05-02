@@ -6,18 +6,24 @@ body {
   font-family: HK Grotesk, Helvetica Neue, sans-serif;
   width: 100%;
   height: 100%;
-  background: var(--dark) url('../images/svg/background.svg') 700px 0px;
+  background: var(--dark) url('../images/svg/backgrounds/background.svg') 700px 0px;
   font-size: 16px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  max-width: 1200px;
+  margin: auto;
 }
 
 #__next {
-  width: 100%;
-  height: 100%;
-  max-width: 1200px;
-  padding: 0 35px;
   margin: auto;
+  box-sizing: border-box;
+  max-width: 90%;
+  height: 100%;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  color: white;
+  position: relative;
 }
 
 ::-webkit-scrollbar {

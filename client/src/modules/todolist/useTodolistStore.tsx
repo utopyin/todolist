@@ -1,12 +1,17 @@
 import React, { createContext, useContext, useState, useEffect} from 'react'
-import { useAuth } from '../auth/useAuthStore'
+import { useQuery } from 'react-query'
 import fetchTodos from './fetchTodos'
-
 interface Props {
   children: React.ReactNode
 }
 
-type Step = {}
+type Step = {
+  id: number,
+  task_id: number,
+  title: string,
+  number: number,
+  completed: boolean
+}
 
 export type Task = {
   id: number,
@@ -14,39 +19,26 @@ export type Task = {
   description: string,
   steps: Array<Step>
 }
+export interface Todos {
+  id: number;
+  tasks: Array<Task>;
+}
 
 const TodoContext = createContext<{
-  todos: Array<Task>;
-  updateTask: (taskID: number, task: Task) => void;
+  todos: Todos | undefined;
+  error: Error | null;
+  isLoading: boolean;
 }>({
-  todos: [],
-  updateTask: () => {}
+  todos: undefined,
+  error: null,
+  isLoading: true,
 })
 
 export default function TodoProvider({children}: Props) {
-  const [todos, setTodos] = useState<Array<Task>>([]);
-  const { user: { id } } = useAuth();
-
-  const updateTask = (taskID: number, task: Task) => {
-    setTodos(oldTodos => {
-      return oldTodos.map<Task>(v => {
-        if (v.id == taskID) return task
-        return v
-      })
-    })
-  }
-
-  // useEffect(() => {
-  //   if (id) fetchTodos(id, setTodos)
-  //     .catch(err => console.table(err))
-  // }, [id])
-
-  // useEffect(() => {
-  //   console.table(todos)
-  // }, [todos])
+  const { data: todos, error, isLoading } = useQuery<Todos, Error>(['todos'], fetchTodos)
 
   return (
-    <TodoContext.Provider value={{todos, updateTask}}>
+    <TodoContext.Provider value={{todos, error, isLoading}}>
       {children}
     </TodoContext.Provider>
   )

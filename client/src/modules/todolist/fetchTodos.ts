@@ -1,18 +1,11 @@
 import axios from 'axios'; 
 import useTokenStore from '../auth/useTokenStore'
-import { Task } from './useTodolistStore'
+import { Todos } from './useTodolistStore'
 
-export default function fetchTodos(
-  userID: number,
-  callback: (
-    data: Array<Task>,
-    taskID?: number
-  ) => void,
-  taskID?: number
-) {
+export default async function fetchTodos() {
   const {accessToken, refreshToken} = useTokenStore.getState()
 
-  return new Promise(async (resolve, reject) => {
+  return new Promise<Todos>(async (resolve, reject) => {
     try {
       const { data, headers } = await axios.get(`${process.env.API}/user/todolist`, {
         headers: {
@@ -20,7 +13,7 @@ export default function fetchTodos(
           'x-refresh-token': refreshToken
         }
       })
-
+  
       useTokenStore
         .getState()
         .setTokens({
@@ -28,10 +21,10 @@ export default function fetchTodos(
           refreshToken: headers['x-refresh-token']
         })
       
-      taskID ? callback(data, taskID) : callback(data)
       resolve(data)
+  
     } catch ({message}) {
-      reject(message)
+      reject({message})
     }
   })
 }

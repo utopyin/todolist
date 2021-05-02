@@ -1,5 +1,5 @@
 button.Normal {
-  background: var(--medium-grey);
+  background: var(--grey-500);
   color: var(--grey);
   padding: 13px 40px;
   border-radius: 5px;
@@ -15,7 +15,7 @@ button.Normal {
 }
 
 button.Normal:hover {
-  background: var(--little-grey);
+  background: var(--grey-500);
   color: var(--grey);
 }
 

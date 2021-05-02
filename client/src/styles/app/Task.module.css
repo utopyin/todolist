@@ -1,0 +1,48 @@
+div.Task {
+  width: 100%;
+  display: flex;
+  background: var(--grey-700);
+  padding: 15px 20px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  position: relative;
+  justify-content: space-between;
+  transition: all ease 0.2s;
+  border: 1px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.096);
+}
+
+div.Task:hover {
+  border: 1px solid var(--orange)
+}
+
+div.Title {
+  margin-top: 8px;
+  margin-left: 15px;
+}
+
+div.Task h3 {
+  font-size: 1.4rem;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+div.Task p {
+  color: var(--greyish);
+}
+
+div.Task p span {
+  color: var(--greyish);
+  font-weight: 600;
+}
+
+div.ButtonsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+div.ButtonsContainer :not(:last-child)  {
+  margin-bottom: 10px;
+}
