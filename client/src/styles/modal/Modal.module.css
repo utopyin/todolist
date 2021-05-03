@@ -1,0 +1,31 @@
+div.Modal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: modal-slide 0.5s ease;
+}
+
+div.Modal h3 {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+div.Fields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+@keyframes modal-slide {
+  0% {
+    opacity: 0;
+    transform: translateY(10px)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px)
+  }
+}

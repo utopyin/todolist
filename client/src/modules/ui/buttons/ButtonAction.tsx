@@ -5,11 +5,12 @@ interface ButtonActionProps {
   text: string;
   callback: React.MouseEventHandler<HTMLButtonElement>;
   svg?: React.ReactNode;
+  style?: {};
 }
 
-const ButtonAction = ({text, callback, svg}: ButtonActionProps) => {
+const ButtonAction = ({text, callback, svg, style}: ButtonActionProps) => {
   return (
-    <button className={styles.Action} onClick={callback}>
+    <button style={style} className={styles.Action} onClick={callback}>
       {svg}
       <span>{text}</span>
     </button>

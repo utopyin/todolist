@@ -15,7 +15,8 @@ export default function Task({data: {
 }}: TaskProps) {
 
   const defaultStep = {id: null, task_id: null, number: 1, completed: false, title: 'No step available'}
-  const currentStep = steps.filter(step => step.completed == true)[0] ?? steps[0] ?? defaultStep
+  const currentStep = steps.filter(step => step.completed == false)[0] ?? steps.filter(step => step.completed == true).slice(-1)[0] ?? defaultStep
+  
   return (
     <div className={styles.Task}>
       <div className={styles.Title}>

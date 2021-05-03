@@ -1,0 +1,37 @@
+div.Input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+div.Input input {
+  outline: none;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 3px;
+  color: var(--grey-200);
+  background: var(--dark);
+  font-size: 0.95rem;
+  width: 100%;
+  transition: all ease 0.3s;
+}
+
+div.Input input::placeholder {
+  color: var(--grey-400);
+  font-size: 0.95rem;
+}
+
+div.Input input:focus {
+  background: var(--grey-800);
+}
+
+div.Input input:hover {
+  background: var(--grey-800);
+}
+
+label.Label {
+  color: var(--grey-300);
+  margin-bottom: 5px;
+}
