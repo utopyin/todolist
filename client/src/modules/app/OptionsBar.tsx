@@ -3,39 +3,20 @@ import styles from '../../styles/app/OptionsBar.module.css'
 import TodosChoice from './TodosChoice'
 import TagsChoice from './TagsChoice'
 import Add from '../../images/svg/pictos/Add'
-import ReactModal from 'react-modal'
-import modalStyles from '../../styles/modal/Modal.module.css'
 import Input from '../ui/form/Input'
+import CreateOnInput from '../ui/form/CreateOnInput'
 import ButtonAction from '../ui/buttons/ButtonAction'
+import modalStyles from '../../styles/modal/Modal.module.css'
+import ModalTemplate from '../modal/ModalTemplate'
+import { Step } from '../todolist/useTodolistStore'
 
 export default function OptionsBar() {
-  const [modalDisplay, setModalDisplay] = useState(false)
+  const [isModalDisplayed, setModalDisplay] = useState(false)
   const [taskTitle, setTaskTitle] = useState("")
-  const [taskStep1, setStep1] = useState("")
+  const [stepFields, setStepFields] = useState([{id: 1, value: ''}])  
   const displayModal = () => setModalDisplay(oldState => !oldState)
 
-  const customStyles = {
-    overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
-      zIndex: 1000,
-    },
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      borderRadius: 8,
-      padding: "40px 40px 40px 40px",
-      transform: "translate(-50%, -50%)",
-      backgroundColor: "var(--grey-600)",
-      border: "none",
-      maxHeight: "80vh",
-      width: "90%",
-      maxWidth: 530,
-    }
-  };
-
+  useEffect(() => console.log(stepFields), [stepFields])
 
   return (
     <div className={styles.Bar}>
@@ -47,31 +28,28 @@ export default function OptionsBar() {
         <span>ADD</span>
         <Add />
       </button>
-      <ReactModal
-        ariaHideApp={false}
-        style={customStyles}
-        isOpen={modalDisplay}
-        onRequestClose={displayModal}
-      >
+      <ModalTemplate displayModal={displayModal} isDisplayed={isModalDisplayed}>
         <div className={modalStyles.Modal}>
-          <h3>Add a task</h3>
-          <div className={modalStyles.Fields}>
-            <Input
-              id="task-title-field"
-              setTitle={setTaskTitle}
-              placeholder="Wash the dishes..."
-              label={{title: "Task title"}}
-            />
-            <Input
-              id="task-step-1"
-              setTitle={setStep1}
-              placeholder="Wash the dishes..."
-              label={{title: "First Step"}}
-            />
-          </div>
-          <ButtonAction style={{marginTop: '10px'}} text="Add" callback={() => {}}/>
+        <h3>Add a task</h3>
+        <div className={modalStyles.Fields}>
+          <Input
+            id="task-title-field"
+            setTitle={setTaskTitle}
+            placeholder="Finish clearing the table"
+            label={{title: "Task title"}}
+          />
+          <CreateOnInput
+            id="task-step"
+            fields={stepFields}
+            setFields={setStepFields}
+            placeholder={["Wash the plate", "Clean the table", "Distributes the cutlery", "Put away the napkins", "Clear the dishwasher"]}
+            label={{title: "Steps"}}
+            button={{text: '+ Add step', id: 'add-step'}}
+          />
         </div>
-      </ReactModal>
+        <ButtonAction style={{marginTop: '10px'}} text="Add" callback={() => {}}/>
+      </div>
+      </ModalTemplate>
     </div>
   )
 }

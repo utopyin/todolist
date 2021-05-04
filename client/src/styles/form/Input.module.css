@@ -35,3 +35,46 @@ label.Label {
   color: var(--grey-300);
   margin-bottom: 5px;
 }
+
+button.AddField {
+  outline: none;
+  border: none;
+  background: var(--grey-400);
+  color: var(--greyish);
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: all ease 0.2s;
+  cursor: pointer;
+}
+
+button.AddField:hover {
+  background: var(--grey-400);
+  color: var(--grey-200);
+}
+
+div.FieldContainer {
+  width: 100%;
+  position: relative;
+}
+
+div.FieldContainer:not(:last-child) input.Field {
+  margin-bottom: 7px;
+}
+
+div.FieldContainer input.Field {
+  padding-right: 40px;
+}
+
+div.FieldContainer svg {
+  width: 15px;
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  fill: var(--grey-400);
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+div.FieldContainer svg:hover {
+  fill: var(--grey-300)
+}

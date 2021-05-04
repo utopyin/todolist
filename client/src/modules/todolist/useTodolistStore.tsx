@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode
 }
 
-type Step = {
+export type Step = {
   id: number,
   task_id: number,
   title: string,
