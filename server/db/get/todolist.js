@@ -1,9 +1,5 @@
 const connexionPromise = require('../index')
 
-// `SELECT * FROM todolists WHERE todolists.user_id = ${userID}`
-// `SELECT * FROM tasks WHERE tasks.list_id = ${todolistID}`
-// `SELECT * FROM steps WHERE steps.task_id = ${task.id}`
-
 module.exports = (userID) => {
   return new Promise(async (resolve, reject) => {
     try {

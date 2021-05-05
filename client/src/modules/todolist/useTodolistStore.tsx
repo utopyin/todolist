@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect} from 'react'
-import { useQuery } from 'react-query'
+import { useQuery, RefetchOptions, QueryObserverResult } from 'react-query'
 import fetchTodos from './fetchTodos'
 interface Props {
   children: React.ReactNode
@@ -28,17 +28,19 @@ const TodoContext = createContext<{
   todos: Todos | undefined;
   error: Error | null;
   isLoading: boolean;
+  refetch: (options?: RefetchOptions | undefined) => Promise<QueryObserverResult<Todos, Error>> | void;
 }>({
   todos: undefined,
   error: null,
   isLoading: true,
+  refetch: () => {},
 })
 
 export default function TodoProvider({children}: Props) {
-  const { data: todos, error, isLoading } = useQuery<Todos, Error>(['todos'], fetchTodos)
+  const { data: todos, error, isLoading, refetch } = useQuery<Todos, Error>(['todos'], fetchTodos)
 
   return (
-    <TodoContext.Provider value={{todos, error, isLoading}}>
+    <TodoContext.Provider value={{todos, error, isLoading, refetch}}>
       {children}
     </TodoContext.Provider>
   )

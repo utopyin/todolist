@@ -8,15 +8,15 @@ import CreateOnInput from '../ui/form/CreateOnInput'
 import ButtonAction from '../ui/buttons/ButtonAction'
 import modalStyles from '../../styles/modal/Modal.module.css'
 import ModalTemplate from '../modal/ModalTemplate'
-import { Step } from '../todolist/useTodolistStore'
+import { useTodoStore } from '../todolist/useTodolistStore'
+import post from '../fetch/post'
 
 export default function OptionsBar() {
   const [isModalDisplayed, setModalDisplay] = useState(false)
   const [taskTitle, setTaskTitle] = useState("")
-  const [stepFields, setStepFields] = useState([{id: 1, value: ''}])  
+  const [stepFields, setStepFields] = useState([{id: 1, value: ''}])
+  const { refetch } = useTodoStore()
   const displayModal = () => setModalDisplay(oldState => !oldState)
-
-  useEffect(() => console.log(stepFields), [stepFields])
 
   return (
     <div className={styles.Bar}>
@@ -47,7 +47,15 @@ export default function OptionsBar() {
             button={{text: '+ Add step', id: 'add-step'}}
           />
         </div>
-        <ButtonAction style={{marginTop: '10px'}} text="Add" callback={() => {}}/>
+        <ButtonAction 
+          style={{marginTop: '10px'}} text="Add"
+          callback={async () => {
+            try {
+              await post('/user/todolist/task', {task: {title: taskTitle, steps: stepFields}})
+              displayModal();
+              refetch();
+            } catch (err) {}
+          }}/>
       </div>
       </ModalTemplate>
     </div>

@@ -1,20 +1,18 @@
-import { UserInterface } from './useAuthStore'
-import useTokenStore from './useTokenStore'
-import axios from 'axios'; 
+import axios from 'axios';
+import useTokenStore from '../auth/useTokenStore'
 
-export default function fetchUserData(callback: (user: UserInterface) => void): Promise<UserInterface> {
+export default function post(adress: string, body: {}) {
   const {accessToken, refreshToken} = useTokenStore.getState()
 
   return new Promise(async (resolve, reject) => {
     try {
-      const { data, headers } = await axios.get(
-        `${process.env.API}/user/data`, {
+      const { data, headers } = await axios.post(
+        process.env.API + adress, body, {
         headers: {
           'x-token': accessToken,
           'x-refresh-token': refreshToken
         }
       })
-      const user = {id: data.id, name: data.name, picture: data.picture, isAdmin: !!data.isAdmin}
       
       useTokenStore
         .getState()
@@ -23,8 +21,7 @@ export default function fetchUserData(callback: (user: UserInterface) => void): 
           refreshToken: headers['x-refresh-token']
         })
         
-      callback(user);
-      resolve(user);
+      resolve(data);
     } catch (error) { reject(error) }
   })
 }
