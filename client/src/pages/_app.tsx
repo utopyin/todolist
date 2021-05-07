@@ -6,6 +6,7 @@ import '../styles/globals.css';
 import '../styles/nprogress/nprogress.css';
 import Head from 'next/head';
 import NProgress from 'nprogress';
+import ErrorProvider from '../modules/error/useError'
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -17,11 +18,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Head>
-        <link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme:light)" />
-        <link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme:dark)" />
-      </Head>
-      <Component {...pageProps}/>
+      <ErrorProvider>
+        <Head>
+          <link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme:light)" />
+          <link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme:dark)" />
+        </Head>
+        <Component {...pageProps}/>
+      </ErrorProvider>
     </QueryClientProvider>
   )
 }

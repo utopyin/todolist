@@ -1,0 +1,35 @@
+div.Error {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--orange);
+  display: flex;
+  align-items: center;
+  z-index: 99999;
+  justify-content: center;
+  padding: 8px 0;
+  animation: error-fade 0.7s ease;
+}
+
+div.Error span {
+  color: white;
+}
+
+div.Error svg {
+  fill: white;
+  width: 30px;
+  margin-right: 5px;
+}
+
+@keyframes error-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

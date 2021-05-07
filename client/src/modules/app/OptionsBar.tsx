@@ -10,6 +10,7 @@ import modalStyles from '../../styles/modal/Modal.module.css'
 import ModalTemplate from '../modal/ModalTemplate'
 import { useTodoStore } from '../todolist/useTodolistStore'
 import post from '../fetch/post'
+import { useError } from '../error/useError'
 
 export default function OptionsBar() {
   const [isModalDisplayed, setModalDisplay] = useState(false)
@@ -17,6 +18,11 @@ export default function OptionsBar() {
   const [stepFields, setStepFields] = useState([{id: 1, value: ''}])
   const { refetch } = useTodoStore()
   const displayModal = () => setModalDisplay(oldState => !oldState)
+  const { setMessage: setErrorMessage } = useError()
+
+  const checkFields = (fields: Array<{id: number; value: string;}>) => {
+    return (!!fields.filter(({value}) => value == '' || value.length == 0 || !value).length)
+  }
 
   return (
     <div className={styles.Bar}>
@@ -51,10 +57,12 @@ export default function OptionsBar() {
           style={{marginTop: '10px'}} text="Add"
           callback={async () => {
             try {
+              if (taskTitle == '' || checkFields(stepFields)) throw {message: 'Fields are incomplete'}
               await post('/user/todolist/task', {task: {title: taskTitle, steps: stepFields}})
+              setErrorMessage(null)
               displayModal();
               refetch();
-            } catch (err) {}
+            } catch (err) {setErrorMessage(err.message)}
           }}/>
       </div>
       </ModalTemplate>

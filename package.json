@@ -16,6 +16,10 @@
   },
   "homepage": "https://github.com/utopyin/todolist#readme",
   "dependencies": {
-    "concurrently": "^6.0.2"
+    "concurrently": "^6.0.2",
+    "react-nextjs-toast": "^1.2.5"
+  },
+  "devDependencies": {
+    "@types/react-notifications-component": "^3.1.0"
   }
 }
