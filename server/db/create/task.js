@@ -12,7 +12,5 @@ module.exports = async function(userID, task) {
         VALUES (${taskID}, "${title}", ${number}, false)
       `)
     })
-  } catch (err) {
-    console.log(err)
-  }
+  } catch (err) { throw err }
 }

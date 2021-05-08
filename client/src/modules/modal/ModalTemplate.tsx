@@ -5,6 +5,7 @@ interface ModalTemplateProps {
   children: React.ReactNode;
   displayModal: () => void;
   isDisplayed: boolean;
+  claims?: {}
 }
 
 const customStyles = {
@@ -29,13 +30,14 @@ const customStyles = {
   }
 };
 
-export default function ModalTemplate({children, displayModal, isDisplayed}: ModalTemplateProps) {
+export default function ModalTemplate({children, displayModal, isDisplayed, claims}: ModalTemplateProps) {
   return (
     <ReactModal
       ariaHideApp={false}
       style={customStyles}
       isOpen={isDisplayed}
-      onRequestClose={displayModal}>
+      onRequestClose={displayModal}
+      {...claims}>
       {children}
     </ReactModal>
   )

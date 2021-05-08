@@ -1,8 +1,8 @@
 import React from 'react';
-import { Task as TaskType } from '../todolist/useTodolistStore'
+import { Task as TaskType } from '../../todolist/useTodolistStore'
 import Task from './Task'
-import OptionsBar from './OptionsBar'
-import styles from '../../styles/app/List.module.css'
+import OptionsBar from '../bar/OptionsBar'
+import styles from '../../../styles/app/List.module.css'
 
 interface ListProps {
   tasks: Array<TaskType>;
