@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import styles from '../../styles/error/Error.module.css'
 import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
-
 interface useErrorProps {
   children: React.ReactNode
 }

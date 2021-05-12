@@ -25,6 +25,6 @@ export default function postMethod(adress: string, body: {}, callback: callbackT
         
       resolve(data);
       callback()
-    } catch (error) { reject(error.response.data) }
+    } catch (error) { reject(error.response?.data ?? error) }
   })
 }

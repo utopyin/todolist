@@ -15,6 +15,10 @@ body {
   margin: auto;
 }
 
+.ReactCollapse--collapse {
+  transition: height 300ms;
+}
+
 #__next {
   margin: auto;
   box-sizing: border-box;
@@ -73,3 +77,10 @@ img {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
+@media screen and (max-width: 500px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+} 

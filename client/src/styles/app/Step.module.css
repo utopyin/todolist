@@ -1,0 +1,46 @@
+div.Step {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  width: 100%;
+  transition: all ease 0.3s;
+  padding: 3px 10px;
+  border-radius: 4px;
+  position: relative;
+}
+div.Step svg {
+  position: absolute;
+  right: 5px;
+  height: 100%;
+  fill: var(--grey-300);
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+
+div.Step svg:hover {
+  fill: var(--orange);
+}
+
+div.Step:hover {
+  background-color: var(--grey-700);
+}
+
+div.Radio {
+  width: 14px;
+  height: 14px;
+  border-radius: 15px;
+  border: 1px solid var(--orange);
+  transition: all ease 0.3s;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+div.Step p {
+  color: var(--grey-100);
+  font-size: 1.2rem;
+  width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: break-spaces;
+  cursor: pointer;
+}

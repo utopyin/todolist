@@ -1,48 +1,81 @@
-div.Task {
+div.TaskContainer {
   width: 100%;
   display: flex;
+  flex-direction: column;
   background: var(--grey-700);
-  padding: 15px 20px;
+  padding: 15px 20px 15px 30px;
   margin-bottom: 18px;
   border-radius: 10px;
-  position: relative;
-  justify-content: space-between;
   transition: all ease 0.2s;
   border: 1px solid transparent;
-  cursor: pointer;
   box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.096);
 }
 
-div.Task:hover {
+div.TaskContainer:hover {
   border: 1px solid var(--orange)
+}
+
+div.Headtask {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 div.Title {
   margin-top: 8px;
-  margin-left: 15px;
+  max-width: 90%;
 }
 
-div.Task h3 {
+div.Headtask h3 {
   font-size: 1.4rem;
   color: var(--white);
   font-weight: 600;
   margin-bottom: 6px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-div.Task p {
+div.Headtask > div > p {
   color: var(--greyish);
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-div.Task p span {
+div.Headtask > div > p span {
   color: var(--greyish);
   font-weight: 600;
 }
 
 div.ButtonsContainer {
   display: flex;
+  cursor: pointer;
   flex-direction: column;
 }
 
 div.ButtonsContainer :not(:last-child)  {
   margin-bottom: 10px;
 }
+
+div.Openedtask {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark);
+  margin-top: 15px;
+  margin-right: 30px;
+  border-radius: 5px;
+  padding: 7px 13px;
+}
+
+@media screen and (max-width: 500px) {
+  div.Title {
+    max-width: 80%;
+  }
+
+  div.TaskContainer {
+    padding: 12px 13px 12px 17px;
+  }
+} 

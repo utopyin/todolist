@@ -3,13 +3,13 @@ import useTokenStore from '../auth/useTokenStore'
 
 type callbackType = () => void
 
-export default function deleteMethod(adress: string, callback: callbackType = () => {}) {
+export default function patchMethod(adress: string, body: {}, callback: callbackType = () => {}) {
   const {accessToken, refreshToken} = useTokenStore.getState()
 
   return new Promise(async (resolve, reject) => {
     try {
-      const { data, headers } = await axios.delete(
-        process.env.API + adress, {
+      const { data, headers } = await axios.patch(
+        process.env.API + adress, body, {
         headers: {
           'x-token': accessToken,
           'x-refresh-token': refreshToken

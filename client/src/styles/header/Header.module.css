@@ -8,3 +8,14 @@ header.Header {
   top: 0;
 }
 
+@media screen and (max-width: 500px) {
+  header.Header {
+    margin-top: 35px;
+    flex-direction: column-reverse;
+    top: 0;
+  }
+
+  header.Header svg {
+    margin-top: 20px;
+  }
+} 

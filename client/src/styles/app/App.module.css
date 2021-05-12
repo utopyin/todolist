@@ -5,3 +5,9 @@ div.App {
   justify-content: center;
   padding-top: 270px;
 }
+
+@media screen and (max-width: 500px) {
+  div.App {
+    padding-top: 200px;
+  }
+} 
