@@ -17,7 +17,7 @@
     "react": "17.0.2",
     "react-collapse": "^5.1.0",
     "react-dom": "17.0.2",
-    "react-modal": "^3.13.1",
+    "react-modal": "^3.14.2",
     "react-query": "^3.13.12",
     "zustand": "^3.4.1"
   },
